@@ -1,6 +1,6 @@
 # Anforderungen – ausfüllbare Vorlage
 
-Anforderungen müssen eindeutig, überprüfbar und mit Tests verknüpft sein. Verwendet keine `M01`-IDs, da sie mit den Milestones M1–M6 verwechselt werden können.
+Anforderungen müssen eindeutig, überprüfbar und mit Tests verknüpft sein. Verwendet ausschließlich das unten definierte `REQ-`-Schema, damit keine Verwechslung mit den Milestones M1–M6 entsteht.
 
 ## ID-Schema
 
