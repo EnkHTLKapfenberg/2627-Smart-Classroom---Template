@@ -1,0 +1,16 @@
+.pio/
+.DS_Store
+Thumbs.db
+
+# Secrets / credentials
+secrets.h
+secrets.ini
+.env
+*.env
+credentials.*
+!credentials.example.*
+
+# Local editor files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
