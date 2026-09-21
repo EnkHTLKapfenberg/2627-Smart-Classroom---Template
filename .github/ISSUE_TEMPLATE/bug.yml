@@ -1,0 +1,57 @@
+name: Fehler / Bug
+description: Einen reproduzierbaren Fehler dokumentieren
+title: "[BUG] "
+labels: []
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Fehlerbeschreibung
+      description: Was funktioniert nicht?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Schritte zum Reproduzieren
+      description: Wie kann der Fehler reproduziert werden?
+      value: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Erwartetes Verhalten
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Tatsächliches Verhalten
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: Log / Fehlermeldung
+      description: Relevante Meldungen einfügen. Keine Passwörter, Tokens oder andere Zugangsdaten posten.
+      render: shell
+
+  - type: textarea
+    id: cause
+    attributes:
+      label: Vermutete Ursache
+      description: Falls bekannt oder vermutet.
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Lösung / Ergebnis
+      description: Vor dem Schließen dokumentieren, wie der Fehler behoben oder eingegrenzt wurde.
