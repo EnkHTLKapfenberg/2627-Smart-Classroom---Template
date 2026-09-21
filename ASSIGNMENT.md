@@ -12,7 +12,7 @@ Das gemeinsame Ziel ist ein verteiltes Automatisierungssystem:
 
 Die Arbeit erfolgt grundsätzlich in Zweiergruppen. Eine Dreiergruppe übernimmt zusätzlich die Einrichtung und Betreuung der gemeinsamen Serverinfrastruktur auf einem Raspberry Pi.
 
-Jede Gruppe entwickelt ein eigenes Teilsystem und ein eigenes Grafana-Dashboard.
+Jede Gruppe entwickelt ein eigenes Teilsystem und ein eigenes Grafana-Dashboard. Jede Gruppe entwickelt dabei einen **eigenen ESP32-basierten Smart Sensor**. Die reine Integration bereits vorhandener Geräte oder Dienste erfüllt die Aufgabenstellung nicht.
 
 ## 3. Verbindliche GitHub-Arbeitsweise
 
@@ -185,27 +185,43 @@ Die Planung umfasst mindestens:
 
 ## 6. Projektphase M3 – Smart Sensor
 
-Implementiert die Sensor-/Aktorsoftware modular und objektorientiert.
+Jede Gruppe entwickelt einen eigenen ESP32-basierten Smart Sensor. Für jeden Smart Sensor gelten folgende Mindestanforderungen:
 
-Ein Smart Sensor soll nicht nur Rohwerte übertragen. Die Verarbeitungskette lautet grundsätzlich:
+1. Er besitzt eigene ESP32-Hardware.
+2. Er wird zuerst mit ESPHome und danach mit Arduino unter Verwendung von FreeRTOS umgesetzt.
+3. Er erfasst Messwerte lokal.
+4. Er erkennt ungültige Werte.
+5. Er führt mindestens eine lokale Verarbeitung durch.
+6. Er berechnet mindestens einen abgeleiteten Zustandswert.
+7. Er veröffentlicht Daten über MQTT.
+8. Er meldet seinen Betriebszustand.
+9. Er verbindet sich nach WLAN- oder MQTT-Verbindungsabbrüchen selbstständig wieder.
+10. Er wird über MQTT Discovery in Home Assistant eingebunden.
+11. Er stellt Daten für Grafana bereit.
+12. Er wird getestet und dokumentiert.
 
-**Messwert erfassen → prüfen → verarbeiten → bewerten → übertragen**
+Die verbindliche Entwicklungsabfolge lautet:
 
-Je nach Messgröße sind beispielsweise sinnvoll:
+1. Zuerst wird ein funktionsfähiger **ESPHome-Prototyp** erstellt.
+2. Danach wird verpflichtend eine **eigene Arduino-/FreeRTOS-Lösung** entwickelt. Darin müssen Erfassung, Verarbeitung, Zustandsbildung, MQTT-Kommunikation und Fehlerbehandlung im eigenen Programm nachvollziehbar implementiert sein.
 
-- Plausibilitätsprüfung,
-- Mittelwert oder gleitender Mittelwert,
+Ein Smart Sensor überträgt nicht nur Rohwerte. Die Verarbeitungskette lautet grundsätzlich:
+
+**Messwert erfassen → prüfen → verarbeiten → Zustand ableiten → übertragen**
+
+Als lokale Verarbeitung eignen sich beispielsweise:
+
+- gleitender Mittelwert,
 - Minimum/Maximum,
-- Median,
-- Ringbuffer,
-- Filter,
+- Trend,
+- Hysterese,
 - Ausreißererkennung,
-- Schwellwerte,
-- Trend- oder Ereigniserkennung.
+- Sensorfusion,
+- Zustandsautomat,
+- Plausibilitätsprüfung,
+- Ereigniserkennung.
 
-Mindestens ein geeignetes Verfahren zur Verarbeitung der Prozessdaten muss umgesetzt und begründet werden.
-
-Verwendet geeignete Datenstrukturen wie Arrays, Klassen, Queues oder Ringbuffer und begründet wesentliche Entscheidungen.
+Mindestens ein geeignetes Verfahren zur Verarbeitung der Prozessdaten muss umgesetzt und begründet werden. Verwendet geeignete Datenstrukturen wie Arrays, Klassen, Queues oder Ringbuffer und begründet wesentliche Entscheidungen.
 
 ## 7. Objektorientierte Entwicklung
 
@@ -215,11 +231,11 @@ Das tatsächliche Klassenmodell richtet sich nach eurem Projekt und wird in `doc
 
 ## 8. Projektphase M4 – MQTT und Home Assistant
 
-Alle Gruppen verwenden eine gemeinsam abgestimmte MQTT-Struktur. Eine mögliche Grundstruktur ist:
+Alle Gruppen halten den verbindlichen [MQTT-Standard](docs/mqtt.md) ein. Die Topic-Basis lautet:
 
-`smartclassroom/<raum>/<device>/<measurement>`
+`smartclassroom/<group_id>/<device_id>/...`
 
-Die vollständige Schnittstelle wird in `docs/mqtt.md` dokumentiert.
+Die Schnittstelle muss sowohl beim ESPHome-Prototyp als auch bei der späteren Arduino-/FreeRTOS-Lösung eingehalten und in `docs/mqtt.md` projektspezifisch ergänzt werden. Alle Sensoren müssen über MQTT Discovery automatisch in Home Assistant erscheinen.
 
 Das Gerät muss Daten veröffentlichen und mindestens eine sinnvolle Funktion über MQTT empfangen können, beispielsweise Messintervall, Grenzwert, Betriebsmodus, Aktorbefehl oder Reset.
 
@@ -266,7 +282,21 @@ Zu dokumentieren sind Hardware, Betriebssystem, Dienste, Netzwerk, Hostnamen, Po
 
 Zugangsdaten dürfen nicht im Repository gespeichert werden.
 
-## 12. Abschluss
+## 12. Sicherheit und Datenschutz
+
+Folgende Regeln gelten verbindlich:
+
+- Es werden keine offenen Arbeiten an 230 V durchgeführt.
+- Schulhardware darf nicht verändert oder beschädigt werden.
+- Die Schulinfrastruktur – insbesondere Leitungen, Jalousien und feste Installationen – darf nicht verändert werden.
+- Audioaufzeichnungen sind verboten. Bei Mikrofonen dürfen ausschließlich lokale Lautstärke- oder Pegelwerte erfasst und weiterverarbeitet werden. Audiodaten dürfen weder gespeichert noch übertragen werden.
+- Passwörter, Tokens, WLAN-Zugangsdaten, private Schlüssel und andere Geheimnisse dürfen nicht in das Repository committed werden.
+- Bei ESPresense und anderer Bluetooth-Präsenzerkennung werden Gerätekennungen pseudonymisiert. Klarnamen, persönliche Gerätebezeichnungen und dauerhaft zuordenbare Rohkennungen dürfen nicht veröffentlicht oder gespeichert werden.
+- TTS wird verantwortungsvoll eingesetzt: nur sachliche, schulbezogene Nachrichten, begrenzte Lautstärke und keine beleidigenden, diskriminierenden, personenbezogenen oder störenden Ausgaben. Die zentrale Ausgabe erfolgt ausschließlich über die freigegebene Home-Assistant-Schnittstelle; Gruppen erhalten keinen Shell-Zugriff auf den Raspberry Pi.
+
+Sicherheits- und Datenschutzrisiken sowie die vorgesehenen Schutzmaßnahmen werden in `PROJECT.md` dokumentiert und getestet, soweit sie technisch prüfbar sind.
+
+## 13. Abschluss
 
 Am Ende präsentiert jede Gruppe ein funktionsfähiges Teilsystem:
 

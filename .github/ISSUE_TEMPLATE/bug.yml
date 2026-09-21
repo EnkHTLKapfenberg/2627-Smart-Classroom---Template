@@ -1,21 +1,26 @@
 name: Fehler / Bug
-description: Einen reproduzierbaren Fehler dokumentieren
+description: Einen Fehler reproduzierbar dokumentieren
 title: "[BUG] "
-labels: []
+labels:
+  - bug
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Dokumentiere den Fehler vollständig. Entferne Geheimnisse und personenbezogene Daten aus Logs.
+
   - type: textarea
     id: description
     attributes:
       label: Fehlerbeschreibung
-      description: Was funktioniert nicht?
+      description: Was funktioniert nicht und unter welchen Bedingungen tritt der Fehler auf?
     validations:
       required: true
 
   - type: textarea
     id: reproduce
     attributes:
-      label: Schritte zum Reproduzieren
-      description: Wie kann der Fehler reproduziert werden?
+      label: Reproduktionsschritte
       value: |
         1. ...
         2. ...
@@ -38,20 +43,32 @@ body:
       required: true
 
   - type: textarea
-    id: log
+    id: logs
     attributes:
-      label: Log / Fehlermeldung
-      description: Relevante Meldungen einfügen. Keine Passwörter, Tokens oder andere Zugangsdaten posten.
+      label: Logs
+      description: Relevante Meldungen ohne Passwörter, Tokens, WLAN-Zugangsdaten oder personenbezogene Daten.
       render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: versions
+    attributes:
+      label: Hardware- und Softwareversion
+      description: ESP32-Variante, Sensor-/Aktorhardware, ESPHome- oder Firmwareversion und relevante Dienste.
+    validations:
+      required: true
 
   - type: textarea
     id: cause
     attributes:
       label: Vermutete Ursache
-      description: Falls bekannt oder vermutet.
+      description: Vermutung mit kurzer Begründung; falls unbekannt, "unbekannt".
+    validations:
+      required: true
 
-  - type: textarea
-    id: solution
+  - type: markdown
     attributes:
-      label: Lösung / Ergebnis
-      description: Vor dem Schließen dokumentieren, wie der Fehler behoben oder eingegrenzt wurde.
+      value: |
+        ## Nach dem Erstellen verpflichtend
+        Mindestens einen **Assignee**, **genau einen Milestone M1–M6**, passende **Labels** und den aktuellen Status im **GitHub Project** setzen.

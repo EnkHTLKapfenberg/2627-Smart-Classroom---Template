@@ -1,30 +1,29 @@
-# Anforderungen
+# Anforderungen – ausfüllbare Vorlage
 
-Formuliert Anforderungen eindeutig und überprüfbar. Verwendet die IDs später in Issues und Tests.
+Anforderungen müssen eindeutig, überprüfbar und mit Tests verknüpft sein. Verwendet keine `M01`-IDs, da sie mit den Milestones M1–M6 verwechselt werden können.
 
-## Muss-Anforderungen
+## ID-Schema
 
-| ID | Anforderung | Wie wird sie geprüft? |
-|---|---|---|
-| M01 | | |
-| M02 | | |
+- `REQ-F-01`, `REQ-F-02`, … für funktionale Anforderungen
+- `REQ-NF-01`, `REQ-NF-02`, … für nichtfunktionale Anforderungen
 
-## Soll-Anforderungen
+## Funktionale Anforderungen
 
-| ID | Anforderung | Wie wird sie geprüft? |
-|---|---|---|
-| S01 | | |
+| ID | Priorität | überprüfbare Anforderung | geplante Prüfung |
+|---|---|---|---|
+| REQ-F-01 | Muss | Beispiel: Das Gerät veröffentlicht mindestens alle 10 Sekunden einen gültigen Messwert. | TEST-01 |
+| REQ-F-02 | … | … | … |
 
-## Kann-Anforderungen
+## Nichtfunktionale Anforderungen
 
-| ID | Anforderung | Wie wird sie geprüft? |
-|---|---|---|
-| K01 | | |
+| ID | Priorität | überprüfbare Anforderung | geplante Prüfung |
+|---|---|---|---|
+| REQ-NF-01 | Muss | Beispiel: Das Gerät stellt nach einem MQTT-Ausfall die Verbindung selbstständig wieder her. | TEST-02 |
+| REQ-NF-02 | … | … | … |
 
-## Hinweise
+## Qualitätsregeln
 
-Eine gute Anforderung ist mess- bzw. überprüfbar.
-
-**Gut:** „Das System muss mindestens alle 10 Sekunden einen gültigen Temperaturmesswert erfassen können.“
-
-**Zu ungenau:** „Das System soll die Temperatur messen.“
+- Jede Anforderung beschreibt ein Ergebnis, nicht nur eine Tätigkeit.
+- Jede Muss-Anforderung besitzt mindestens einen zugeordneten Test in [testing.md](testing.md).
+- Verwendet messbare Größen, Grenzen oder eindeutig beobachtbares Verhalten.
+- Änderungen an Anforderungen werden über ein GitHub Issue und einen Pull Request durchgeführt.

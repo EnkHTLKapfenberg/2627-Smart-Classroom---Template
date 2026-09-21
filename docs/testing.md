@@ -1,17 +1,18 @@
-# Systemtests
+# Systemtests – ausfüllbare Vorlage
 
-Tests sollen Anforderungen und wichtige Fehlerfälle nachvollziehbar prüfen.
+Jeder Test besitzt eine eindeutige ID im Format `TEST-01`, `TEST-02`, … und verweist auf mindestens eine Anforderungs-ID aus [requirements.md](requirements.md).
 
 ## Testübersicht
 
-| ID | Anforderung | Test/Durchführung | Erwartetes Ergebnis | Tatsächliches Ergebnis | Status |
+| Test-ID | Anforderungs-ID(s) | Test / Durchführung | erwartetes Ergebnis | tatsächliches Ergebnis | Status |
 |---|---|---|---|---|---|
-| T01 | M01 | | | | ⬜ |
-| T02 | M02 | | | | ⬜ |
+| TEST-01 | REQ-F-01 | Beispiel: Veröffentlichungszeitpunkte für eine Minute aufzeichnen. | Abstand höchstens 10 s | … | ⬜ offen |
+| TEST-02 | REQ-NF-01 | Beispiel: MQTT-Verbindung trennen und wieder freigeben. | automatische Wiederverbindung | … | ⬜ offen |
+| TEST-03 | … | … | … | … | ⬜ offen |
 
-Status beispielsweise: ⬜ offen / ✅ bestanden / ❌ fehlgeschlagen.
+Status: ⬜ offen / ✅ bestanden / ❌ fehlgeschlagen.
 
-## Integrationstests
+## Verbindliche Fehler- und Integrationstests
 
 Berücksichtigt abhängig vom System insbesondere:
 
@@ -20,27 +21,29 @@ Berücksichtigt abhängig vom System insbesondere:
 - Sensorausfall
 - WLAN-Unterbrechung
 - MQTT-Verbindungsabbruch
-- Neustart des Mikrocontrollers
+- Neustart des ESP32
 - Neustart zentraler Dienste
 - gleichzeitiger Betrieb aller Smart-Classroom-Geräte
+- sichere Zustände von Aktoren
+- Datenschutz- und TTS-Grenzen, soweit technisch prüfbar
 
-## Ausführliche Testbeschreibungen
+## Ausführliche Testbeschreibung
 
-Für komplexere Tests:
+### TEST-XX – Titel
 
-### Txx – Titel
+**Geprüfte Anforderungen:** REQ-F-XX, REQ-NF-XX
 
-**Voraussetzung:**  
-...
+**Voraussetzungen:** …
 
-**Durchführung:**  
-...
+**Testdaten / Hardware:** …
 
-**Erwartetes Ergebnis:**  
-...
+**Durchführung:**
 
-**Tatsächliches Ergebnis:**  
-...
+1. …
+2. …
 
-**Ergebnis / Folgemaßnahmen:**  
-...
+**Erwartetes Ergebnis:** …
+
+**Tatsächliches Ergebnis / Messwerte:** …
+
+**Status und Folgemaßnahmen:** …

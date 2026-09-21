@@ -1,53 +1,90 @@
-# Projektbeschreibung
+# Projektbeschreibung – ausfüllbare Vorlage
 
-## 1. Team
+> Diese Datei beschreibt dauerhaft Projektidee, Anforderungen auf Überblicksebene und Architektur. Sie enthält **keinen laufenden Projektstatus**. Aufgaben, Verantwortlichkeiten und Fortschritt werden ausschließlich über GitHub Issues und das GitHub Project verwaltet.
 
-| Name | GitHub-Benutzer |
+## 1. Gruppenname
+
+**Gruppenname:** …
+
+## 2. Teammitglieder und GitHub-Namen
+
+| Name | GitHub-Benutzername |
 |---|---|
-| | |
-| | |
+| … | @… |
+| … | @… |
 
-## 2. Projektidee
+## 3. Gruppenthema
 
-Beschreibt euer Smart-Classroom-Teilsystem.
+**Gewähltes Thema aus [GROUPS.md](GROUPS.md):** …
 
-## 3. Problemstellung
+Beschreibt kurz, wie ihr das Thema fachlich interpretiert.
 
-Welches Problem bzw. welche Fragestellung im Klassenzimmer soll mit eurem System untersucht oder gelöst werden?
+## 4. Problemstellung
 
-## 4. Sensoren
+Welches konkrete Problem oder welche Fragestellung im Klassenraum soll euer System untersuchen oder lösen?
 
-| Sensor | Messgröße | Zweck |
-|---|---|---|
-| | | |
+…
 
-## 5. Aktoren
+## 5. Sensoren
 
-| Aktor | Aufgabe | Ansteuerung |
-|---|---|---|
-| | | |
+Die konkrete Auswahl erfolgt in M1/M2 und muss begründet werden.
 
-Falls keine Aktoren verwendet werden, begründet dies kurz.
+| Messgröße | geplanter Sensor / Prinzip | Zweck | Auswahlbegründung |
+|---|---|---|---|
+| … | … | … | … |
 
-## 6. Lokale Datenverarbeitung
+## 6. Aktoren
 
-Welche Daten sollen bereits auf dem Mikrocontroller verarbeitet werden?
+| Aktor / Ausgabe | Aufgabe | Auslöser | Sicherheitsgrenzen |
+|---|---|---|---|
+| … | … | … | … |
 
-Geplant sind beispielsweise:
+Falls keine Aktoren verwendet werden, begründet dies.
 
-- ...
-- ...
+## 7. Gewählter Softwarestack
 
-## 7. Gesamtsystem
+- **ESPHome-Prototyp:** …
+- **Verpflichtende Arduino-/FreeRTOS-Lösung:** …
+- **Bibliotheken und Versionen:** …
+- **Home Assistant / Grafana:** …
 
-Beschreibt kurz den Datenfluss eures Systems.
+Beschreibt den geplanten Übergang von ESPHome zur eigenen Arduino-/FreeRTOS-Implementierung.
 
-Beispiel:
+## 8. Lokale Datenverarbeitung
 
-Sensor → ESP32 → lokale Verarbeitung → MQTT → Home Assistant → Datenspeicherung → Grafana
+Welche Verarbeitung erfolgt direkt auf dem ESP32? Welcher abgeleitete Zustandswert entsteht?
 
-## 8. Abgrenzung
+| Eingangsdaten | Verfahren | abgeleiteter Zustand | Begründung |
+|---|---|---|---|
+| … | z. B. gleitender Mittelwert | … | … |
 
-Welche Aufgaben übernimmt euer Teilsystem? Welche Aufgaben übernehmen andere Komponenten des gemeinsamen Smart-Classroom-Systems?
+## 9. Datenfluss
 
-> Der aktuelle Arbeitsstand gehört nicht in diese Datei. Aufgaben und Fortschritt werden über GitHub Issues und das GitHub Project dokumentiert.
+Beispiel: Sensor → ESP32 → Prüfung → lokale Verarbeitung → Zustandsbildung → MQTT → Home Assistant → Datenspeicherung → Grafana
+
+**Unser Datenfluss:** …
+
+## 10. MQTT-Schnittstellen
+
+Verweist auf den [MQTT-Standard](docs/mqtt.md) und nennt eure vorgesehenen `group_id`, `device_id`, Messwerte, Zustände und Befehle.
+
+…
+
+## 11. Abgrenzung
+
+Welche Aufgaben übernimmt euer Teilsystem? Was gehört ausdrücklich nicht zum Projektumfang? Welche Aufgaben übernehmen andere Gruppen oder zentrale Dienste?
+
+…
+
+## 12. Sicherheits- und Datenschutzbetrachtung
+
+Beschreibt Gefahren, personenbezogene oder pseudonymisierte Daten, technische Schutzmaßnahmen und verbleibende Risiken. Beachtet insbesondere 230 V, Schulhardware, Audio, Bluetooth/ESPresense, TTS und Zugangsdaten.
+
+…
+
+## 13. Abnahmekriterien
+
+Formuliert überprüfbare Kriterien und verweist auf IDs aus [docs/requirements.md](docs/requirements.md).
+
+- [ ] …
+- [ ] …

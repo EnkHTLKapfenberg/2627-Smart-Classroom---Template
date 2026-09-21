@@ -6,31 +6,30 @@ body:
   - type: markdown
     attributes:
       value: |
-        Beschreibe eine klar abgegrenzte Aufgabe. Der Issue-Status muss dem tatsächlichen Arbeitsstand entsprechen.
+        Beschreibe ein klar abgegrenztes Arbeitspaket. Verwende Anforderungs-IDs wie REQ-F-01 oder REQ-NF-01.
 
   - type: textarea
     id: goal
     attributes:
       label: Ziel
-      description: Was soll mit dieser Aufgabe erreicht werden?
-      placeholder: Beschreibe das konkrete Ergebnis.
+      description: Welches eindeutige und überprüfbare Ergebnis soll erreicht werden?
     validations:
       required: true
 
   - type: input
     id: requirement
     attributes:
-      label: Zugehörige Anforderung(en)
-      description: IDs aus docs/requirements.md, z. B. M03, S01. Falls nicht zutreffend, "keine".
-      placeholder: M03
+      label: Betroffene Anforderung
+      description: Mindestens eine ID aus docs/requirements.md oder eine kurze Begründung, falls noch keine ID existiert.
+      placeholder: "REQ-F-01"
     validations:
       required: true
 
   - type: textarea
     id: implementation
     attributes:
-      label: Geplante technische Umsetzung
-      description: Wie soll die Aufgabe gelöst werden?
+      label: Geplante Umsetzung
+      description: Wie soll die Aufgabe technisch oder organisatorisch gelöst werden?
     validations:
       required: true
 
@@ -38,27 +37,47 @@ body:
     id: steps
     attributes:
       label: Arbeitsschritte
-      description: Verwende eine Markdown-Checkliste.
+      description: Verwende eine konkrete Markdown-Checkliste.
       value: |
-        - [ ] ...
         - [ ] ...
         - [ ] ...
     validations:
       required: true
 
-  - type: checkboxes
-    id: done
+  - type: textarea
+    id: acceptance
     attributes:
-      label: Definition of Done
-      description: Vor dem Schließen des Issues müssen die zutreffenden Punkte erfüllt sein.
-      options:
-        - label: Funktion/Aufgabe umgesetzt
-        - label: Ergebnis getestet bzw. kontrolliert
-        - label: Änderungen committed und gepusht
-        - label: Zugehörige Dokumentation aktualisiert
+      label: Abnahmekriterien
+      description: Woran ist eindeutig erkennbar, dass die Aufgabe erfüllt ist?
+    validations:
+      required: true
 
   - type: textarea
-    id: result
+    id: test
     attributes:
-      label: Ergebnis / Bemerkungen
-      description: Vor dem Schließen kurz festhalten, was tatsächlich umgesetzt wurde und welche Besonderheiten aufgetreten sind.
+      label: Testidee
+      description: Wie werden Funktion und Abnahmekriterien geprüft?
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Abhängigkeiten
+      description: Welche Issues, Entscheidungen, Dienste oder Personen werden benötigt? Falls keine, "keine".
+    validations:
+      required: true
+
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Benötigte Hardware
+      description: Welche Hardware wird benötigt? Falls keine, "keine".
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Nach dem Erstellen verpflichtend
+        Mindestens einen **Assignee**, **genau einen Milestone M1–M6**, passende **Labels** und den aktuellen Status im **GitHub Project** setzen.

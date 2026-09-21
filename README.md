@@ -2,37 +2,32 @@
 
 SEN-Projekt 2026/27 – HTL Kapfenberg
 
-## Team
+## Einstieg
 
-| Name | GitHub |
-|---|---|
-| Schüler/in 1 | @username |
-| Schüler/in 2 | @username |
+1. [Verbindliche Aufgabenstellung lesen](ASSIGNMENT.md).
+2. [Gruppenthema prüfen](GROUPS.md).
+3. Gruppennamen, Teammitglieder und GitHub-Namen in [PROJECT.md](PROJECT.md) eintragen.
+4. Die Entwicklungsabfolge **ESPHome → Arduino/FreeRTOS** planen.
+5. Initiale GitHub Issues und ihre Zuordnung zu Anforderungen, Labels, Milestone und Project prüfen.
+6. Das erste Issue übernehmen und auf `In Progress` setzen.
+7. Aus dem Issue einen eigenen Branch erstellen.
+8. Änderungen per Pull Request einreichen, testen und durch einen Gruppenpartner reviewen lassen.
 
-> Die Dreiergruppe ergänzt eine weitere Zeile.
+## Wichtige Dokumente
 
-## Projekt
-
-Beschreibt hier euer Smart-Classroom-Teilsystem in 2–4 Sätzen.
-
-Die ausführliche Beschreibung befindet sich in [PROJECT.md](PROJECT.md).  
-Die verbindliche Aufgabenstellung befindet sich in [ASSIGNMENT.md](ASSIGNMENT.md).
-
-## Dokumentation
-
+- [Aufgabenstellung und GitHub-Arbeitsweise](ASSIGNMENT.md)
+- [Acht Gruppenthemen](GROUPS.md)
+- [Projektbeschreibung](PROJECT.md)
 - [Anforderungen](docs/requirements.md)
 - [Systemarchitektur](docs/architecture.md)
-- [MQTT-Schnittstelle](docs/mqtt.md)
+- [Verbindlicher MQTT-Standard](docs/mqtt.md)
 - [Systemtests](docs/testing.md)
-
-## Software und Integration
-
-- [Firmware](firmware/)
-- [Home Assistant](homeassistant/)
-- [Grafana](grafana/)
+- [Firmware](firmware/README.md)
+- [Home Assistant und TTS](homeassistant/README.md)
+- [Grafana](grafana/README.md)
 
 ## Projektstatus
 
-Aktuelle Aufgaben, Zuständigkeiten und Fortschritt werden ausschließlich über GitHub Issues und das GitHub Project verwaltet.
+Aktuelle Aufgaben, Zuständigkeiten und Fortschritt werden ausschließlich über GitHub Issues und das GitHub Project verwaltet. Der Status in GitHub muss dem tatsächlichen Arbeitsstand entsprechen.
 
-**Wichtig:** Der Status in GitHub muss dem tatsächlichen Arbeitsstand entsprechen. Zugangsdaten, Passwörter und API-Keys dürfen niemals in das Repository committed werden.
+Keine Passwörter, Tokens, WLAN-Zugangsdaten, privaten Schlüssel oder andere Geheimnisse committen.

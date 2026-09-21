@@ -1,29 +1,34 @@
 ## Zugehöriges Issue
 
-Closes #
+Closes #...
 
 ## Änderungen
 
-Was wurde umgesetzt?
+Was wurde umgesetzt und warum?
 
-- 
+- ...
 
-## Test
+## Tests und Nachweise
 
-Wie wurde die Änderung getestet?
+Wie wurde getestet? Fügt Screenshots oder Messergebnisse ein, wenn sie das Ergebnis sinnvoll belegen.
 
-- 
-
-## Review-Hinweise
-
-Gibt es Bereiche, die besonders geprüft werden sollen?
-
-- 
+- ...
 
 ## Checkliste
 
-- [ ] Code kompiliert bzw. Konfiguration ist syntaktisch gültig
-- [ ] Funktion wurde getestet
-- [ ] Keine Zugangsdaten, Passwörter oder Tokens committed
-- [ ] Zugehörige Dokumentation wurde aktualisiert
-- [ ] Zugehöriges Issue ist angegeben
+- [ ] Zugehöriges Issue mit `Closes #...` verknüpft
+- [ ] Änderung verständlich beschrieben
+- [ ] Akzeptanzkriterien erfüllt
+- [ ] Lokal getestet
+- [ ] Hardwaretest durchgeführt oder nachvollziehbar begründet, warum er nicht erforderlich beziehungsweise möglich ist
+- [ ] Keine Passwörter, Tokens, WLAN-Zugangsdaten oder andere Geheimnisse committed
+- [ ] Dokumentation aktualisiert
+- [ ] MQTT-Schnittstelle in `docs/mqtt.md` dokumentiert oder als nicht betroffen begründet
+- [ ] Screenshots oder Messergebnisse ergänzt, wenn sinnvoll
+- [ ] Review durch mindestens einen Gruppenpartner angefordert
+
+## Review-Hinweise
+
+Welche Bereiche soll der Gruppenpartner besonders prüfen?
+
+- ...
